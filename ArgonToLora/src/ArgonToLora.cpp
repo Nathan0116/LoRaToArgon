@@ -19,7 +19,7 @@ SYSTEM_THREAD(ENABLED);
 SerialLogHandler logHandler(LOG_LEVEL_INFO);
   const int wet=1100;
   const int dry=2900;
-
+  const int m=100;
 void setup()
 {
   Serial1.begin(115200);//
@@ -29,19 +29,19 @@ void setup()
 void loop()
 {
   u_int16_t battVoltage;
-  u_int16_t HumidityPercent[100];
+  u_int16_t HumidityPercent[m];
   int AveragePercent;
   u_int16_t sum=0;
  // Serial1.begin(115200);
 
   if(Serial1.available()>0)
   {
-    for(int i=0;i<100;i++){
+    for(int i=0;i<m;i++){
       battVoltage = analogRead(A0);
       HumidityPercent[i] = map(battVoltage, wet, dry, 100, 0);
       sum=sum+HumidityPercent[i];
     }
-    AveragePercent=sum/100;
+    AveragePercent=sum/m;
   //  ch =Serial1.read();
   //  Serial.write(char(ch));
     Serial1.write(char(AveragePercent));
