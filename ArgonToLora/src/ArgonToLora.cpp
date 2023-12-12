@@ -9,7 +9,7 @@
  *    Serial.begin(115200);
  *    Serial2.begin(115200, SERIAL_8N1, 2, 15);//recieve and transmit pins respectively
  *
- *Copy and paste code above processwork function. call function in process work Function
+ *Copy and paste below code above the processwork function in LMIC node. call function in process work Function
  *  uint16_t getSensorvalue(int write)
  *  {
  *   uint16_t HumidityPercentage;
